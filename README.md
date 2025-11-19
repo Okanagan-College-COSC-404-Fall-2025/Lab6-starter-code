@@ -89,8 +89,8 @@ erDiagram
 (8 marks)
 1.	Create a nested table type to store multiple gift items (e.g., 'Teddy Bear', 'Chocolate Box').
 2.	Create a table GIFT_CATALOG with the following columns:
-     - GIFT_ID — PRIMARY KEY
-     - PURCHASE_AMOUNT — the purchase amount to qualify for the gift package
+     - GIFT_ID (NUMBER)— PRIMARY KEY
+     - MIN_PURCHASE (NUMBER) — the minimum purchase amount to qualify for the gift package
      - a nested table of gift items (use the type created above)
 3. Configure nested table storage:
 ```
@@ -102,9 +102,9 @@ NESTED TABLE gifts STORE AS <your_storage_table>;
   	
 | GIFT_ID | MIN_PURCHASE | GIFTS (nested table) |
 |---------|--------------|-----------------------|
-| 1       | 10           | { 'Stickers', 'Pen Set' } |
-| 2       | 25           | { 'Teddy Bear', 'Mug', 'Perfume Sample' } |
-| 3       | 50           | { 'Backpack', 'Thermos Bottle', 'Chocolate Collection' } |
+| 1       | 100           | { 'Stickers', 'Pen Set' } |
+| 2       | 1000           | { 'Teddy Bear', 'Mug', 'Perfume Sample' } |
+| 3       | 10000           | { 'Backpack', 'Thermos Bottle', 'Chocolate Collection' } |
 
 ## Part B — Create CUSTOMER_REWARDS Table (Nested Table + Foreign Key)
 (3 marks)
@@ -124,5 +124,34 @@ Create a table CUSTOMER_REWARDS:
 | 101       | alice@example.com  | 2       | 2025-11-12   |
 | 102       | bob@example.org    | 1       | 2025-11-12   |
 | 103       | charlie@domain.com | 3       | 2025-11-12   |
+
+
+## Part C — Package CUSTOMER_MANAGER Using the CO Schema
+
+(14 marks)
+
+Create a PL/SQL package named CUSTOMER_MANAGER that assigns gift packages to customers based on the total value of their completed orders.
+
+Your package must work directly with the CO schema shown above. Your package needs to have the following features
+
+1. A public function `GET_TOTAL_PURCHASE(customer_id)`: The function takes in the ID of a customer and returns the total amount of purchases that the customer has made  
+2. A private function `CHOOSE_GIFT_PACKAGE(p_total_purchase)`:
+   **Requirements:**
+   - Use a CASE expression or CASE logic
+   - Select the gift package from GIFT_CATALOG where:
+     `MIN_PURCHASE is the largest value <= p_total_purchase`
+   - Return the GIFT_ID of the chosen package.
+   - If no package applies, return NULL.
+3. a public procedure `ASSIGN_GIFTS_TO_ALL`:
+   **Requirements**
+   For each customer in **CUSTOMERS:**
+   1. Compute total purchase (use your function)
+   2. Select a suitable gift package (via GIFT_ID returned by your function)
+   3. Insert into CUSTOMER_REWARDS:
+        -  	customer email
+        -  	gift_id
+        -  	reward date (current data)
+     
+  
 
 
