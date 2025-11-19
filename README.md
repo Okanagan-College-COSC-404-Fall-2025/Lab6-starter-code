@@ -97,4 +97,32 @@ erDiagram
 NESTED TABLE gifts STORE AS <your_storage_table>;
 ```
 4. Insert at least three gift packages, each containing multiple gift items.
+
+**Example rows (You can insert your own values in this table)** 
   	
+| GIFT_ID | MIN_PURCHASE | GIFTS (nested table) |
+|---------|--------------|-----------------------|
+| 1       | 10           | { 'Stickers', 'Pen Set' } |
+| 2       | 25           | { 'Teddy Bear', 'Mug', 'Perfume Sample' } |
+| 3       | 50           | { 'Backpack', 'Thermos Bottle', 'Chocolate Collection' } |
+
+## Part B — Create CUSTOMER_REWARDS Table (Nested Table + Foreign Key)
+(3 marks)
+
+Create a table CUSTOMER_REWARDS:
+-	REWARD_ID — primary key (identity or sequence)
+-	CUSTOMER_EMAIL — customer email from CUSTOMERS
+-	GIFT_ID — FOREIGN KEY referencing GIFT_CATALOG(GIFT_ID)
+-	REWARD_DATE — defaults to SYSDATE
+
+**This table will be populated by a function that you will implement in this lab**
+
+**Example**
+
+| REWARD_ID | CUSTOMER_EMAIL     | GIFT_ID | REWARD_DATE |
+|-----------|--------------------|---------|--------------|
+| 101       | alice@example.com  | 2       | 2025-11-12   |
+| 102       | bob@example.org    | 1       | 2025-11-12   |
+| 103       | charlie@domain.com | 3       | 2025-11-12   |
+
+
