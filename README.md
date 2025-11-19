@@ -134,7 +134,7 @@ Create a PL/SQL package named CUSTOMER_MANAGER that assigns gift packages to cus
 
 Your package must work directly with the CO schema shown above. Your package needs to have the following features
 
-1. A public function `GET_TOTAL_PURCHASE(customer_id)`: The function takes in the ID of a customer and returns the total amount of purchases that the customer has made  
+1. A public function `GET_TOTAL_PURCHASE(customer_id)`: The function accepts a customer ID and returns the total value of all purchases made by that customer. 
 2. A private function `CHOOSE_GIFT_PACKAGE(p_total_purchase)`:
    **Requirements:**
    - Use a CASE expression or CASE logic
@@ -151,7 +151,12 @@ Your package must work directly with the CO schema shown above. Your package nee
         -  	customer email
         -  	gift_id
         -  	reward date (current data)
-     
+
+## Part D: Test Package:
+Implement a procedure that joins the `CUSTOMER_REWARDS` and `GIFT_CATALOG` tables and displays the results for the first five customers. Capture a screenshot of the output.
+
+## Submssion
+Make a directory named scripts and place all your SQL scripts inside it. Additionally, create another directory named screenshots and include the screenshot for Part D in that folder. Push your submission to the remote repository. Finally, submit the link to your repository in the Moodle assignment.
   
 
 
