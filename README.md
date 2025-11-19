@@ -85,3 +85,16 @@ erDiagram
   integer      product_inventory     "NN"
 }
 ```
+## Part A — Create Gift Types and GIFT_CATALOG Table (Nested Tables)
+(8 marks)
+1.	Create a nested table type to store multiple gift items (e.g., 'Teddy Bear', 'Chocolate Box').
+2.	Create a table GIFT_CATALOG with the following columns:
+     - GIFT_ID — PRIMARY KEY
+     - PURCHASE_AMOUNT — the purchase amount to qualify for the gift package
+     - a nested table of gift items (use the type created above)
+3. Configure nested table storage:
+```
+NESTED TABLE gifts STORE AS <your_storage_table>;
+```
+4. Insert at least three gift packages, each containing multiple gift items.
+  	
