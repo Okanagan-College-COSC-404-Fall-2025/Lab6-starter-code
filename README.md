@@ -153,6 +153,8 @@ Your package must work directly with the CO schema shown above. Your package nee
         -  	reward date (current data)
 
 ## Part D: Test Package:
+(5 marks)
+
 Implement a procedure that joins the `CUSTOMER_REWARDS` and `GIFT_CATALOG` tables and displays the results for the first five customers. Capture a screenshot of the output.
 
 ## Submssion
